@@ -27,8 +27,8 @@ function draw() {
 	if(snake.collide()){
 		food.randomPos();
 	}
-	food.show();
-	snake.show2();
+	food.show2();
+	snake.show();
 }
 
 function keyPressed(){
