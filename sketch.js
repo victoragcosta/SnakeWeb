@@ -2,6 +2,8 @@ var tile = 20;
 var snake;
 var food;
 var game;
+var delay = 150;
+var timing = [];
 
 var touchPoints = [];
 
@@ -21,24 +23,32 @@ function setup() {
 
 	food = new Food(tile);
 	food.randomPos();
-	frameRate(8);
+	//frameRate(8);
 
 	game = new GameControl();
+
+	//time = new Date();
+	timing[1] = Date.now();
 }
 
 function draw() {
-	background(51);
-	noStroke();
+	timing[0] = Date.now();
 
-	game.show();
+	if(timing[0]-timing[1] >= delay){
+		timing[1] = timing[0];
+		background(51);
+		noStroke();
 
-	snake.update();
-	snake.eat(food);
-	if(snake.collide()){
-		food.randomPos();
+		game.show();
+
+		snake.update();
+		snake.eat(food);
+		if(snake.collide()){
+			food.randomPos();
+		}
+		food.show2();
+		snake.show();
 	}
-	food.show2();
-	snake.show();
 }
 
 function keyPressed(){
