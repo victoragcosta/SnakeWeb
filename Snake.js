@@ -30,8 +30,8 @@ function Snake(tileSize){
 
 		this.pos = this.pos.add(this.vel.copy().mult(this.tileSize));
 
-		var x = constrain(this.pos.x, 0, width-this.tileSize);
-		var y = constrain(this.pos.y, 0, height-this.tileSize);
+		var x = constrain(this.pos.x, -this.tileSize, width);
+		var y = constrain(this.pos.y, -this.tileSize, height);
 		this.pos.set(x, y);
 	}
 
@@ -51,14 +51,22 @@ function Snake(tileSize){
 		}
 	}
 
+	this.lose = function(){
+		game.endGame();
+		this.startOver();
+	}
+
 	this.collide = function(){
 		for(var i = 0; i < this.tail.length; i++){
 			var dist = this.pos.dist(this.tail[i]);
 			if(dist < 1){
-				game.endGame();
-				this.startOver();
+				this.lose();
 				return true;
 			}
+		}
+		if(this.pos.x < 0 || this.pos.x >= width || this.pos.y < 0 || this.pos.y >= height){
+			this.lose();
+			return true;
 		}
 		return false;
 	}
