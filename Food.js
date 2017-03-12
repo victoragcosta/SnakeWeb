@@ -4,8 +4,8 @@ function Food(tileSize){
 	this.image = null;
 
 	this.randomPos = function(){
-		var x = floor(random(width)/20)*20;
-		var y = floor(random(height)/20)*20;
+		var x = floor(random(width)/this.tileSize)*this.tileSize;
+		var y = floor(random(height)/this.tileSize)*this.tileSize;
 		this.pos.set(x, y);
 	}
 
