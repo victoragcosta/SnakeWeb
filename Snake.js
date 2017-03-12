@@ -45,7 +45,7 @@ function Snake(tileSize){
 
 	this.eat = function(food){
 		var dist = food.pos.dist(this.pos);
-		if(dist < 1){
+		if(dist < this.tileSize/2){
 			this.size++;
 			food.randomPos();
 		}
@@ -59,12 +59,12 @@ function Snake(tileSize){
 	this.collide = function(){
 		for(var i = 0; i < this.tail.length; i++){
 			var dist = this.pos.dist(this.tail[i]);
-			if(dist < 1){
+			if(dist < this.tileSize/2){
 				this.lose();
 				return true;
 			}
 		}
-		if(this.pos.x < 0 || this.pos.x >= width || this.pos.y < 0 || this.pos.y >= height){
+		if(this.pos.x <= -this.tileSize/2 || this.pos.x >= width || this.pos.y < -this.tileSize/2 || this.pos.y >= height){
 			this.lose();
 			return true;
 		}

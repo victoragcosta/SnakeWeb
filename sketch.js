@@ -6,8 +6,16 @@ var game;
 var touchPoints = [];
 
 function setup() {
-	createCanvas(600, 600);	
+
+	var cnvs;
+	if(displayWidth < displayHeight){
+		cnvs = createCanvas(windowWidth, windowWidth);	
+	} else {
+		cnvs = createCanvas(windowHeight, windowHeight);	
+	}
 	
+	cnvs.position((windowWidth - width)/2,(windowHeight - height)/2);
+
 	snake = new Snake(tile);
 	snake.startOver();
 
