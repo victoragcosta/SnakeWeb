@@ -7,7 +7,7 @@ function Snake(tileSize){
 	this.hide = false;
 
 	this.startOver = function(){
-		this.pos.set(floor(width/2), floor(height/2));
+		this.pos.set(floor(width/this.tileSize/2)*this.tileSize, floor(height/this.tileSize/2)*this.tileSize);
 		this.vel.set(0,0);
 		this.size = 0;
 		this.tail = [];

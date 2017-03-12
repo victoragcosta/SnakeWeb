@@ -1,4 +1,4 @@
-function Game(){
+function GameControl(){
 	this.gameStatus = 0; //0 -> Stop / 1-> Game Over / 2-> Running
 
 	this.show = function(){

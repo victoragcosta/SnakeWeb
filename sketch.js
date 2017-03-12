@@ -9,11 +9,11 @@ function setup() {
 
 	var cnvs;
 	if(displayWidth < displayHeight){
-		cnvs = createCanvas(windowWidth, windowWidth);	
+		cnvs = createCanvas(windowWidth - windowWidth%tile, windowWidth - windowWidth%tile);
 	} else {
-		cnvs = createCanvas(windowHeight, windowHeight);	
+		cnvs = createCanvas(windowHeight - windowHeight%tile, windowHeight - windowHeight%tile);	
 	}
-	
+
 	cnvs.position((windowWidth - width)/2,(windowHeight - height)/2);
 
 	snake = new Snake(tile);
@@ -23,7 +23,7 @@ function setup() {
 	food.randomPos();
 	frameRate(8);
 
-	game = new Game();
+	game = new GameControl();
 }
 
 function draw() {
